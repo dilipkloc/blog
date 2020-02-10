@@ -1,5 +1,9 @@
 <h1> Index </h1>
 
 <% @categories.each_with_index do |category,index| %>
-  <%= index+1 %>) <b> Name: </b> <%= category.name %> <b> Description: </b> <%= category.description %> <b> Number of articles: </b> <%= category.Article.count %>
+  <%= index+1 %>) 
+  <b> Name: </b> <%= category.name %> 
+  <b> Description: </b> <%= category.description %> 
+  <b> Number of articles: </b> <%= category.articles.count %>
+  <b>ID: </b> <%= category.id %> <br/>
 <% end %>

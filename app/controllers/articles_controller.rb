@@ -3,12 +3,15 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
   
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new
     @article = Article.new
   end
 
   def create
-    
     @article = Article.new
     @article.title = params['article']['title']
     @article.body = params['article']['body']
@@ -22,6 +25,8 @@ class ArticlesController < ApplicationController
     end
     if @article.save
       redirect_to articles_path
+    else
+      redirect_to article_new_path
     end
   end
 end
