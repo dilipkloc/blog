@@ -20,9 +20,8 @@ class ArticlesController < ApplicationController
     else
       @article.is_published = false
     end
-    binding.pry
-    # if @article.save
-    #   redirect_to articles_path
-    # end
+    if @article.save
+      redirect_to articles_path
+    end
   end
 end
