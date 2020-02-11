@@ -5,5 +5,6 @@
   <b> Name: </b> <%= category.name %> 
   <b> Description: </b> <%= category.description %> 
   <b> Number of articles: </b> <%= category.articles.count %>
-  <b>ID: </b> <%= category.id %> <br/>
+  <b>ID: </b> <%= category.id %> 
+  <%= link_to "Delete", category , method: :delete, data: { confirm: "sure?" } %><br/>
 <% end %>

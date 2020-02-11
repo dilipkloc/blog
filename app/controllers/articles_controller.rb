@@ -17,10 +17,11 @@ class ArticlesController < ApplicationController
     @article.body = params['article']['body']
     @article.category_id = params['article']['category_id']
     @article.publish_date = params['article']['publish_date']
-    @article.feature_image_url = params['article']['feature_image_url']
-    if params['article']['is_published'] == "1"
+    @article.feature_image_url = params['article']['feature_image_url'].path
+    binding.pry
+    if @article.publish_date <= Date.today
       @article.is_published = true
-    else
+    elsif @article.publish_date > Date.today
       @article.is_published = false
     end
     if @article.save

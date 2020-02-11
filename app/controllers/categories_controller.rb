@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
 
   def show
     @articles = Article.where(:category_id => params[:id])
-    # @articles = Article.find_by category_id: params[:id]
   end
   
   def new
@@ -32,6 +31,15 @@ class CategoriesController < ApplicationController
     @category.description = params['category']['description']
     if @category.save
       redirect_to categories_path
+    end
+  end
+
+  def destroy
+    @category=Category.find(params[:id])
+    if @category.destroy
+      redirect_to categories_path
+    else
+      redirect_to categories_
     end
   end
   

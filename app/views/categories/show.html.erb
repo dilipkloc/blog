@@ -1,8 +1,10 @@
 <h1> show </h1>
-  <b> <%= Category.find(@articles.first.category_id).name %> </b> <br/>
-  <% @articles.each_with_index do |article,index| %>
-
-    <%= index+1 %>) <%= article.title %>
-    <%= link_to 'Read Article', article_path(article.id)%><br/>
-
+  <% if @articles.empty? or @articles.nil? %>
+    <b> No articles present for this ID </b>
+  <% else %>
+    <b> <%= Category.find(@articles.first.category_id).name %> </b> <br/>
+      <% @articles.each_with_index do |article,index| %>
+      <%= index+1 %>) <%= article.title %>
+      <%= link_to 'Read Article', article_path(article.id)%><br/>
+    <% end %>
   <% end %>

@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   post 'categories', to: 'categories#create'
   get 'categories/:id/edit', to: 'categories#edit'
   patch 'categories/:id', to: 'categories#update'
+  delete 'categories/:id', to: 'categories#destroy'
 
   get 'articles', to: 'articles#index', as: 'articles'
-  get 'articles/:id', to: 'articles#show', as: 'article'
   get 'articles/new', to: 'articles#new', as: 'article_new'
   post 'articles', to: 'articles#create'
+  get 'articles/:id', to: 'articles#show', as: 'article'
+  
 end
