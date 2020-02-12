@@ -12,7 +12,7 @@
   <label> Publish date:  </label>
   <%= f.date_field :publish_date, order: [:day, :month, :year] %><br/>
 
-  <label> Enter your URL </label>
+  <%= f.label :feature_image_url %>
   <%= f.file_field :feature_image_url %><br/>
   
   <%= f.submit %>

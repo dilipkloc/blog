@@ -16,9 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.new
     @category.name = params['category']['name']
     @category.description = params['category']['description']
-    binding.pry
     if @category.save
-      binding.pry
       redirect_to categories_path
     end
   end
@@ -40,8 +38,6 @@ class CategoriesController < ApplicationController
     @category=Category.find(params[:id])
     if @category.destroy
       redirect_to categories_path
-      #redirect_to categories_
-    else
     end
   end
   

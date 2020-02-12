@@ -17,8 +17,7 @@ class ArticlesController < ApplicationController
     @article.body = params['article']['body']
     @article.category_id = params['article']['category_id']
     @article.publish_date = params['article']['publish_date']
-    @article.feature_image_url = params['article']['feature_image_url'].path
-    binding.pry
+    @article.feature_image_url = params['article']['feature_image_url']
     if @article.publish_date <= Date.today
       @article.is_published = true
     elsif @article.publish_date > Date.today
@@ -31,9 +30,36 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def update
+    @article = Article.find(params[:id])
+    @article.title = params['article']['title']
+    @article.body = params['article']['body']
+    @article.category_id = params['article']['category_id']
+    @article.publish_date = params['article']['publish_date']
+    if not params['article']['feature_image_url'].nil?
+      @article.feature_image_url = params['article']['feature_image_url']
+    end
+    if @article.publish_date <= Date.today
+      @article.is_published = true
+    elsif @article.publish_date > Date.today
+      @article.is_published = false
+    end
+    if @article.save
+      redirect_to articles_path
+    else
+      redirect_to article_edit_path
+    end
   end
 
   def destroy
+    @article=Article.find(params[:id])
+    if @article.destroy
+      redirect_to articles_path
+    end
   end
+
 end
