@@ -30,4 +30,10 @@ class ArticlesController < ApplicationController
       redirect_to article_new_path
     end
   end
+
+  def update
+  end
+
+  def destroy
+  end
 end

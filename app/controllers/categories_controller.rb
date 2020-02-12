@@ -38,8 +38,8 @@ class CategoriesController < ApplicationController
     @category=Category.find(params[:id])
     if @category.destroy
       redirect_to categories_path
+      #redirect_to categories_
     else
-      redirect_to categories_
     end
   end
   
