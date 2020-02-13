@@ -6,11 +6,15 @@ ruby '2.7.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'coffee-rails', '~> 4.2'
+gem 'friendly_id', '~> 5.2.4'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'pry'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+
+gem 'hirb'
+gem 'cancancan'
 
 gem 'sass-rails', '~> 5.0'
 gem 'shoulda-matchers'
