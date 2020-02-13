@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   
   get 'categories', to: 'categories#index', as: 'categories'
-  get 'categories/new', to: 'categories#new'
+  get 'categories/new', to: 'categories#new', as: 'category_new'
   get 'categories/:id', to: 'categories#show', as: 'category'
   post 'categories', to: 'categories#create'
-  get 'categories/:id/edit', to: 'categories#edit'
+  get 'categories/:id/edit', to: 'categories#edit', as: 'category_edit'
   patch 'categories/:id', to: 'categories#update'
   delete 'categories/:id', to: 'categories#destroy'
 

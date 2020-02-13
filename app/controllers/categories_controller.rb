@@ -29,6 +29,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.name = params['category']['name']
     @category.description = params['category']['description']
+    binding.pry
     if @category.save
       redirect_to categories_path
     end
