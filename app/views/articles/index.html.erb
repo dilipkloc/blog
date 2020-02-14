@@ -11,6 +11,7 @@
       <b> Body: </b><%= article.body %><br/>
       <%= article.category_id %><br/>
       <b> Publish Date: </b> <%= article.publish_date %><br/>
+      <%= link_to "Read More", article_path(article.id) %>
       <%= link_to "Delete", article , method: :delete, data: { confirm: "sure?" } %><br/><br/> <br/>
     <% end %>
   <% end %>

@@ -19,10 +19,12 @@ Rails.application.routes.draw do
 
   get 'errors', to: 'errors#index', as: 'errors'
 
-  get 'postcomments/:id', to: 'postcomments#show', as: 'postcomments'
-  post 'postcomments/:id', to: 'postcomments#create'
-  get 'postcomments/:id/edit', to: 'postcomments#edit', as: 'comment_edit'
-  patch 'comment/:id', to: 'comment#update'
+  get 'postcomments', to: 'postcomments#index'
+  get 'postcomments/new', to: 'postcomments#new'
+  get 'postcomments/:id', to: 'postcomments#show', as: 'postcomment'
+  post 'postcomments/', to: 'postcomments#create'
+  get 'postcomments/:id/edit', to: 'postcomments#edit', as: 'postcomment_edit'
+  patch 'postcomments/:id', to: 'postcomments#update'
   delete 'postcomments/:id', to: 'postcomments#destroy'
 
 

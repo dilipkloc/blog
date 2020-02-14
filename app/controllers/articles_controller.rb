@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   
   def show
     # binding.pry
-    @comment = Comment.new
+    @postcomment = Postcomment.new
     @article = Article.find(params[:id])
     
   end

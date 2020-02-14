@@ -15,20 +15,20 @@
 
 <h1> Comments Below </h1>
 
-<% Comment.where(:article_id => @article.id).each do |comment| %>
+<% Postcomment.where(:article_id => @article.id).each do |comment| %>
   <b>ID <%= comment.id %>
   <b> <%= comment.title %>: </b> <%= comment.body %>
-  <%= link_to 'edit', comment_edit_path(comment.id)%><br/>
-  <%#= link_to "Delete", comment , method: :delete, data: { confirm: "sure?" } %>
+  <%= link_to 'edit', postcomment_edit_path(comment.id)%>
+  <%= link_to "Delete", comment , method: :delete, data: { confirm: "sure?" } %><br/>
 <% end %>
 
 <div align=center>
 
-<%= form_for @comment do |f| %>
+<%= form_for Postcomment.new do |f| %>
 
   <% if user_signed_in? %>
 
-    <%= f.hidden_field :article_id, :disabled => true, value: @article.id %><br/>
+    <%= f.hidden_field :article_id, value: @article.id %><br/>
 
     <label> Enter Title </label>
     <%= f.text_field :title %><br/>
