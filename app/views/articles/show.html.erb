@@ -10,3 +10,30 @@
   <% else %>
     It is not published
   <% end %><br/>
+
+
+<h1> Comments Below </h1>
+
+<% Comment.where(:article_id => @article.id).each do |comment| %>
+  <b> <%= comment.title %>: </b> <%= comment.body %>
+<% end %>
+
+
+
+<%= form_for @comment do |f| %>
+
+  <% if user_signed_in? %>
+
+    <%= f.text_field :article_id, :disabled => true, value: @article.id %>
+
+    <label> Enter Title </label>
+    <%= f.text_field :title %>
+
+    <label> Your comments </label>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+
+  <% end %>
+
+<% end %>

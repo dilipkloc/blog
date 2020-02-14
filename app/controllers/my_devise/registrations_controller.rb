@@ -8,7 +8,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
       if @permission.save
         articles_path
       else
-      errors_path
+        errors_path
       end
     end
   end

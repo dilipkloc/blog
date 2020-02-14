@@ -4,7 +4,10 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.friendly.find(params[:id])
+    # binding.pry
+    @comment = Comment.new
+    @article = Article.find(params[:id])
+    
   end
 
   def new

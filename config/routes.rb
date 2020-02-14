@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   get 'errors', to: 'errors#index', as: 'errors'
 
+  get 'comments/:id', to: 'comments#show', as: 'comments'
+  post 'comments/:id', to: 'comments#create'
+
 
   devise_for :users,
              :controllers => {:registrations => "my_devise/registrations"}
