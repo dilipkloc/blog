@@ -18,8 +18,10 @@
 <% Postcomment.where(:article_id => @article.id).each do |comment| %>
   <b>ID <%= comment.id %>
   <b> <%= comment.title %>: </b> <%= comment.body %>
-  <%= link_to 'edit', postcomment_edit_path(comment.id)%>
-  <%= link_to "Delete", comment , method: :delete, data: { confirm: "sure?" } %><br/>
+  <% if comment.user_id == current_user.id  or @article.user_id == current_user.id or can? :manage, comment or can? :edit, comment%>
+    <%= link_to 'edit', postcomment_edit_path(comment.id)%>
+    <%= link_to "Delete", comment , method: :delete, data: { confirm: "sure?" } %><br/>
+  <% end %>
 <% end %>
 
 <div align=center>

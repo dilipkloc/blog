@@ -2,10 +2,10 @@ class Article < ApplicationRecord
   # extend FriendlyId
   # friendly_id :title, use: :slugged
   mount_uploader :feature_image_url, CoverUploader
-  belongs_to :category
   validates_presence_of :title,:body,:category_id,:publish_date,:feature_image_url
+  
   validate :article_published?
-
+  belongs_to :category
   belongs_to :user
   has_many :postcomments
 

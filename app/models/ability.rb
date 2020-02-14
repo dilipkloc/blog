@@ -10,6 +10,8 @@ class Ability
       can :addComment, :all
     elsif user.roles.first.role == 'author'
       can :postArticle, Category
+    elsif user.roles.first.role == 'moderator'
+      can :edit, Postcomment
     end
   end
 end
