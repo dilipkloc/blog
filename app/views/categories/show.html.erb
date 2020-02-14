@@ -7,4 +7,5 @@
       <%= index+1 %>) <%= article.title %>
       <%= link_to 'Read Article', article_path(article.id)%><br/>
     <% end %>
+    <%= link_to 'Add Article',article_new_path %>
   <% end %>

@@ -4,10 +4,8 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    # binding.pry
     @postcomment = Postcomment.new
     @article = Article.find(params[:id])
-    
   end
 
   def new
@@ -47,7 +45,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    binding.pry
     @article = Article.find(params[:id])
     @article.title = params['article']['title']
     @article.body = params['article']['body']

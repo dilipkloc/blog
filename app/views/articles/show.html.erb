@@ -1,17 +1,19 @@
 <h1> Show </h1>
 <b> Category: </b>  <%= link_to Category.find_by('id', @article.category_id).name, category_path(@article.category_id) %><br/>
-<%= image_tag(@article.feature_image_url.url, size: "500x250") if @article.feature_image_url %><br/>
+<%= image_tag(@article.feature_image_url.url, style: 'height:250px;max-width 200px;width:100%;') if @article.feature_image_url %><br/>
 <b> Title: </b> <%= @article.title %> <br/>
 <b> Body: </b> <%= @article.body %><br/>
 <b> Publish date: </b> <%= @article.publish_date %><br/>
- <%#= @article.feature_image_url %><br/>
 <b> Is Published: </b> 
   <% if @article.is_published %>
     It is published
   <% else %>
     It is not published
   <% end %><br/>
-
+  <% if user_signed_in? and (can? :manage, @article or current_user.id == @article.user_id) %>
+    <%= link_to "edit", article_edit_path(@article.id) %>
+    <%= link_to "Delete", @article , method: :delete, data: { confirm: "sure?" } %><br/><br/> <br/>
+  <% end %>
 
 <h1> Comments Below </h1>
 

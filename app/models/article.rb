@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   validate :article_published?
   belongs_to :category
   belongs_to :user
-  has_many :postcomments
+  has_many :postcomments, dependent: :destroy
 
   def article_published?
     if publish_date > 1.month.from_now

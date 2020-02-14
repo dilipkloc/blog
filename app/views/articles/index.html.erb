@@ -4,14 +4,18 @@
   <% end %>
   <% @articles.each do |article|%>
     <% if article.is_published %>
+    <div style="max-width: 600px; width: 80%;margin:auto;border: 3px solid rgba(120,120,144,0.3);padding:10px;margin-top: 5px;margin-bottom: 5px">
       <b> Category: <%= Category.find(article.category_id).name %> </b> <br/>
-      <b> ID: </b>  <%= article.id %>
-      <%= image_tag(article.feature_image_url.url, size: "100x50") if article.feature_image_url %><br/>
+      <%= image_tag(article.feature_image_url.url, style: 'height:250px;width:100%') if article.feature_image_url %><br/>
       <b> Title: </b>  <%= article.title %><br/>
       <b> Body: </b><%= article.body %><br/>
       <%= article.category_id %><br/>
       <b> Publish Date: </b> <%= article.publish_date %><br/>
       <%= link_to "Read More", article_path(article.id) %>
-      <%= link_to "Delete", article , method: :delete, data: { confirm: "sure?" } %><br/><br/> <br/>
+      <% if user_signed_in? and (can? :manage, article or current_user.id == article.user_id) %>
+        <%= link_to "edit", article_edit_path(article.id) %>
+        <%= link_to "Delete", article , method: :delete, data: { confirm: "sure?" } %><br/><br/> <br/>
+      <% end %>
+    </div>
     <% end %>
   <% end %>
