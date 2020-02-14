@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def show
-    @comment = Comment.new
+    @comment1 = Comment.new
     # @comment.article_id = params[:id]
   end
 
@@ -18,5 +18,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    # binding.pry
+    @comment1 = Comment.find(params[:id])
+    # binding.pry
+  end
+
+  def delete
+    
+  end
 
 end

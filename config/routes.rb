@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'comments/:id', to: 'comments#show', as: 'comments'
   post 'comments/:id', to: 'comments#create'
+  get 'comments/:id/edit', to: 'comments#edit', as: 'comment_edit'
 
 
   devise_for :users,

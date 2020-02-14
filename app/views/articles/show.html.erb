@@ -16,7 +16,9 @@
 <h1> Comments Below </h1>
 
 <% Comment.where(:article_id => @article.id).each do |comment| %>
+  <b>ID <%= comment.id %>
   <b> <%= comment.title %>: </b> <%= comment.body %>
+  <%= link_to 'edit', comment_edit_path(comment.id)%><br/>
 <% end %>
 
 <div align=center>

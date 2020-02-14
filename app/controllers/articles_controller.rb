@@ -43,10 +43,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.friendly.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def update
+    binding.pry
     @article = Article.find(params[:id])
     @article.title = params['article']['title']
     @article.body = params['article']['body']
