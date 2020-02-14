@@ -1,6 +1,6 @@
-<%= form_for @comment1 do |f| %>
 
-  <label> Enter your article title </label>
+  <%= form_for @postcomments do |f| %>
+    <label> Enter your Comment title </label>
   <%= f.text_field :title %><br/><br/>
 
   <label> Say something about your article </label>
@@ -13,3 +13,5 @@
   <%= f.submit %>
 
 <% end %>
+
+

@@ -19,9 +19,11 @@ Rails.application.routes.draw do
 
   get 'errors', to: 'errors#index', as: 'errors'
 
-  get 'comments/:id', to: 'comments#show', as: 'comments'
-  post 'comments/:id', to: 'comments#create'
-  get 'comments/:id/edit', to: 'comments#edit', as: 'comment_edit'
+  get 'postcomments/:id', to: 'postcomments#show', as: 'postcomments'
+  post 'postcomments/:id', to: 'postcomments#create'
+  get 'postcomments/:id/edit', to: 'postcomments#edit', as: 'comment_edit'
+  patch 'comment/:id', to: 'comment#update'
+  delete 'postcomments/:id', to: 'postcomments#destroy'
 
 
   devise_for :users,

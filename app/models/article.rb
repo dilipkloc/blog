@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   validate :article_published?
 
   belongs_to :user
-  has_many :comments
+  has_many :postcomments
 
   def article_published?
     if publish_date > 1.month.from_now

@@ -19,6 +19,7 @@
   <b>ID <%= comment.id %>
   <b> <%= comment.title %>: </b> <%= comment.body %>
   <%= link_to 'edit', comment_edit_path(comment.id)%><br/>
+  <%#= link_to "Delete", comment , method: :delete, data: { confirm: "sure?" } %>
 <% end %>
 
 <div align=center>
