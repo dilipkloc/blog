@@ -16,6 +16,9 @@
     </div>
     <div align=right>
       <% if user_signed_in? %>
+        <% if can? :manage, Category%>
+          <%= link_to 'Add Category', category_new_path  %>
+        <% end %>
         <%= link_to 'log out', destroy_user_session_path, method: :delete %>
         <%= current_user.id %>
       <% else %>
