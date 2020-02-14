@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get 'errors', to: 'errors#index', as: 'errors'
 
 
-  devise_for :users
+  devise_for :users,
+             :controllers => {:registrations => "my_devise/registrations"}
 
   root 'articles#index'
 end
