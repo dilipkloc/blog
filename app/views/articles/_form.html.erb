@@ -1,27 +1,47 @@
-<%= form_with model: @article do |f| %>
+<%= form_with model: @article, :builder => Judge::FormBuilder do |f| %>
+
+  <span id='err'> </span>
 
   <% if user_signed_in? %>
   
   <label> Enter your article title </label>
-  <%= f.text_field :title %><br/><br/>
+  <%= f.text_field :title, id: 'title', :validate => true %><br/><br/>
 
   <label> Say something about your article </label>
-  <%= f.text_field :body %><br/><br/>
+  <%= f.text_field :body, :validate => true %><br/><br/>
 
   <label> Which category this articles belongs to:  </label>
-  <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category" %><br/><br/>
+  <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category", :validate => true %><br/><br/>
 
   <label> Publish date:  </label>
-  <%= f.date_field :publish_date, order: [:day, :month, :year] %><br/><br/>
+  <%= f.date_field :publish_date, order: [:day, :month, :year], :validate => true %><br/><br/>
 
   <%= f.label :feature_image_url %>
-  <%= f.file_field :feature_image_url %><br/><br/>
+  <%= f.file_field :feature_image_url, :validate => true %><br/><br/>
   
   <%= f.submit %>
 
 
   <% else %>  
-    <p> You must sign in inorder to post an article </p> 
+    <p> You must sign in inorder to post an article </p>
   <% end %>
 
 <% end %>
+
+<script>
+  judge.validate(document.getElementById('title'));
+  // document.getElementById('articlesubmit').addEventListener('submit',function(e){
+  //   document.getElementById('title').value = "sdfsdf"
+  //   console.log('ew')
+  //   if document.getElementById('title').value == ""{
+      
+  //     document.getElementById('err').innerHTML = "Make sure all the fields are entered";
+  //     e.preventDefault();
+      
+  //   }else{
+  //     document.getElementById('err').innerHTML = ""
+  //   }
+    
+  // }
+
+</script>

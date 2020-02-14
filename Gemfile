@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'friendly_id', '~> 5.2.4'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
+gem "judge", "~> 1.0.0"
 gem 'pry'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
