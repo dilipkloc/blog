@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
     @comment.article_id = params[:id]
     @comment.user_id = current_user.id
     if @comment.save
+      #notice = "Your comment added successfully"
+      flash.notice = "Your comment has been added"
       redirect_to article_path(params[:id])
     end
   end

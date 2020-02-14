@@ -1,9 +1,10 @@
 <h1> Show </h1>
 <b> Category: </b>  <%= link_to Category.find_by('id', @article.category_id).name, category_path(@article.category_id) %><br/>
+<%= image_tag(@article.feature_image_url.url, size: "500x250") if @article.feature_image_url %><br/>
 <b> Title: </b> <%= @article.title %> <br/>
 <b> Body: </b> <%= @article.body %><br/>
 <b> Publish date: </b> <%= @article.publish_date %><br/>
-<b> Image URL: </b> <%= @article.feature_image_url %><br/>
+ <%#= @article.feature_image_url %><br/>
 <b> Is Published: </b> 
   <% if @article.is_published %>
     It is published
@@ -18,22 +19,23 @@
   <b> <%= comment.title %>: </b> <%= comment.body %>
 <% end %>
 
-
+<div align=center>
 
 <%= form_for @comment do |f| %>
 
   <% if user_signed_in? %>
 
-    <%= f.text_field :article_id, :disabled => true, value: @article.id %>
+    <%= f.hidden_field :article_id, :disabled => true, value: @article.id %><br/>
 
     <label> Enter Title </label>
-    <%= f.text_field :title %>
+    <%= f.text_field :title %><br/>
 
     <label> Your comments </label>
-    <%= f.text_area :body %>
+    <%= f.text_area :body %><br/>
 
-    <%= f.submit %>
+    <%= f.submit %><br/>
 
   <% end %>
+  </div>
 
 <% end %>
