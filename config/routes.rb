@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   patch 'articles/:id', to: 'articles#update'
   delete 'articles/:id', to: 'articles#destroy'
 
+  get 'errors', to: 'errors#index', as: 'errors'
+
 
   devise_for :users
 

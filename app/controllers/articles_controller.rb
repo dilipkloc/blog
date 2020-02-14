@@ -23,8 +23,17 @@ class ArticlesController < ApplicationController
     elsif @article.publish_date > Date.today
       @article.is_published = false
     end
+    @article.user_id = current_user.id
     if @article.save
-      redirect_to articles_path
+      if not current_user.permissions.exists?(role_id:2) and not current_user.permissions.exists?(role_id:1)
+        @permission = Permission.new
+        @permission.user_id = current_user.id
+        @permission.role_id = 2
+        if not @permission.save
+          redirect_to errors_path
+        end
+      end
+      redirect_to articles_path  
     else
       redirect_to article_new_path
     end
