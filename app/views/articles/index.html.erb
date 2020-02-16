@@ -1,5 +1,5 @@
 <h1> articles index </h1>
-  <% if user_signed_in? %>
+  <% if user_signed_in? and not :can? edit, Article %>
     <%= link_to 'Add new article', article_new_path %><br/><br/><br/>
   <% end %>
   <% @articles.each do |article|%>
