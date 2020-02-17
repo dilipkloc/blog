@@ -10,6 +10,8 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
       else
         errors_path
       end
+    else
+      errors_path
     end
   end
 end

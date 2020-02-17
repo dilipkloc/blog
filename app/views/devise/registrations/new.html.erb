@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username %> <span id="unameError"> </span>
   </div>
 
   <div class="field">
@@ -47,3 +47,24 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+ var email = document.getElementById('user_email');
+ var form = document.getElementById('new_user');
+ var username = document.getElementById('user_username');
+ var mobile = document.getElementById('user_mobile');
+ var gender = document.getElementById('user_gender');
+ var dob = document.getElementById('user_dob');
+
+ var unameError = document.getElementById('unameError');
+//  var 
+
+  form.addEventListener('submit',function(e){
+    if username.value === ""{
+      unameError.innerHTML = "Username cannot be empty";
+      e.preventDefault();
+    }else{
+      unameError.innerHTML = "";
+    }
+      },false);
+</script>

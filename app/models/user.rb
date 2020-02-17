@@ -9,6 +9,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates_length_of :mobile, maximum: 10
+  validates_presence_of :username, :mobile, :gender, :dob
+  validates_numericality_of :mobile
+
   def self.find_for_database_authentication warder_condition
     conditions = warder_condition.dup
     login = conditions.delete(:login)
