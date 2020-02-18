@@ -2,6 +2,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if resource.save
+      
       @permission = Permission.new
       @permission.user_id = resource.id
       @permission.role_id = 4

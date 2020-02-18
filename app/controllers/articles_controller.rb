@@ -26,6 +26,8 @@ class ArticlesController < ApplicationController
     end
     @article.user_id = current_user.id
     if @article.save
+      @email = current_user.email
+      NotificationMailer.article_create(@email).deliver!
       if not current_user.permissions.exists?(role_id:2) and not current_user.permissions.exists?(role_id:1)
         @permission = Permission.new
         @permission.user_id = current_user.id
