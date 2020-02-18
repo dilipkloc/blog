@@ -1,5 +1,5 @@
 <h1> Show </h1>
-<% require 'pry'; binding.pry %>
+
 <b> Category: </b>  <%= link_to Category.find_by('id', @article.category_id).name, category_path(@article.category_id) %><br/>
 <%= image_tag(@article.feature_image_url.url, style: 'height:250px;max-width 200px;width:100%;') if @article.feature_image_url %><br/>
 <b> Title: </b> <%= @article.title %> <br/>
@@ -20,7 +20,7 @@
 
 <% Postcomment.where(:article_id => @article.id).each do |comment| %>
   <b> Title: </b> <%= comment.title %><br/> <b> Body: </b> <%= comment.body %><br/>
-  <% if comment.user_id == current_user.id  or @article.user_id == current_user.id or can? :manage, comment or can? :edit, comment%>
+  <% if user_signed_in? and (comment.user_id == current_user.id  or @article.user_id == current_user.id or can? :manage, comment or can? :edit, comment)%>
     <%= link_to 'edit', postcomment_edit_path(comment.id)%>
     <%= link_to "Delete", comment , method: :delete, data: { confirm: "sure?" } %><br/>
   <% end %>
